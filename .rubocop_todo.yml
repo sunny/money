@@ -30,41 +30,9 @@ Metrics/ModuleLength:
 Metrics/PerceivedComplexity:
   Max: 16
 
-# Configuration parameters: CountAsOne.
-RSpec/ExampleLength:
-  Max: 38
-
-# Configuration parameters: AllowedGroups.
-RSpec/NestedGroups:
-  Max: 5
-
-# Configuration parameters: CustomTransform, IgnoreMethods, IgnoreMetadata, InflectorPath, EnforcedInflector.
-# SupportedInflectors: default, active_support
-RSpec/SpecFilePathFormat:
-  Exclude:
-    - '**/spec/routing/**/*'
-    - 'spec/bank/base_spec.rb'
-    - 'spec/bank/single_currency_spec.rb'
-    - 'spec/bank/variable_exchange_spec.rb'
-    - 'spec/currency/heuristics_spec.rb'
-    - 'spec/currency/loader_spec.rb'
-    - 'spec/currency_spec.rb'
-    - 'spec/locale_backend/currency_spec.rb'
-    - 'spec/locale_backend/i18n_spec.rb'
-    - 'spec/rates_store/memory_spec.rb'
-
 Security/CompoundHash:
   Exclude:
     - 'lib/money/money.rb'
-
-# This cop supports unsafe autocorrection (--autocorrect-all).
-Security/JSONLoad:
-  Exclude:
-    - 'spec/bank/variable_exchange_spec.rb'
-
-Security/MarshalLoad:
-  Exclude:
-    - 'spec/bank/variable_exchange_spec.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowOnConstant, AllowOnSelfClass.
@@ -87,7 +55,21 @@ Style/IfInsideElse:
 # Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
 # SupportedStyles: single_quotes, double_quotes
 Style/StringLiterals:
-  Enabled: false
+  Exclude:
+    - 'lib/money/bank/single_currency.rb'
+    - 'lib/money/bank/variable_exchange.rb'
+    - 'lib/money/currency.rb'
+    - 'lib/money/locale_backend/base.rb'
+    - 'lib/money/locale_backend/currency.rb'
+    - 'lib/money/locale_backend/i18n.rb'
+    - 'lib/money/money.rb'
+    - 'lib/money/money/allocation.rb'
+    - 'lib/money/money/arithmetic.rb'
+    - 'lib/money/money/formatter.rb'
+    - 'lib/money/money/formatting_rules.rb'
+    - 'lib/money/money/locale_backend.rb'
+    - 'lib/money/rates_store/memory.rb'
+    - 'money.gemspec'
 
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowHeredoc, AllowURI, AllowQualifiedName, URISchemes, IgnoreCopDirectives, AllowedPatterns, SplitStrings.

@@ -416,6 +416,7 @@ RSpec.describe "Money formatting" do
         Money::Currency.unregister(indian_bar)
       end
 
+      # rubocop:disable Style/NumericLiterals
       specify "(south_asian_number_formatting: true) works as documented" do
         expect(Money.new(10000000, 'INR').format(south_asian_number_formatting: true, symbol: false)).to eq "1,00,000.00"
         expect(Money.new(1000000000, 'INDIAN_BAR').format(south_asian_number_formatting: true, symbol: false)).to eq "1,00,000.0000"
@@ -426,6 +427,7 @@ RSpec.describe "Money formatting" do
         expect(Money.new(10000000, 'INR').format(south_asian_number_formatting: true, symbol: false, no_cents_if_whole: true)).to eq "1,00,000"
         expect(Money.new(1000000000, 'INDIAN_BAR').format(south_asian_number_formatting: true, symbol: false, no_cents_if_whole: true)).to eq "1,00,000"
       end
+      # rubocop:enable Style/NumericLiterals
     end
 
     describe ":thousands_separator option" do
@@ -688,6 +690,7 @@ RSpec.describe "Money formatting" do
       Money::Currency.unregister(eu4)
     end
 
+    # rubocop:disable Style/NumericLiterals
     it "respects custom subunit to unit, decimal and thousands separator" do
       expect(Money.new(4, "BAR").format).to eq "$0.0004"
       expect(Money.new(4, "EU4").format).to eq "€0,0004"
@@ -716,6 +719,7 @@ RSpec.describe "Money formatting" do
       expect(Money.new(88833310034, "BAR").format).to eq "$8,883,331.0034"
       expect(Money.new(88833310034, "EU4").format).to eq "€8.883.331,0034"
     end
+    # rubocop:enable Style/NumericLiterals
   end
 
   context "with currencies with ambiguous signs" do

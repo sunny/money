@@ -33,7 +33,7 @@ Layout/SpaceInsideArrayPercentLiteral:
 Lint/BinaryOperatorWithIdenticalOperands:
   # In specs we want to test instances of Money are really equal.
   Exclude:
-    - 'spec/**/*'
+    - spec/**/*
 
 Lint/EmptyClass:
   # Allow defining empty classes, since it can be used as a base class.
@@ -52,8 +52,8 @@ Naming/PredicateMethod:
 RSpec/DescribedClass:
   Exclude:
     # Prefer Money.new(…) to described_class.new(…)
-    - 'spec/money_spec.rb'
-    - 'spec/money/formatting_spec.rb'
+    - spec/money_spec.rb
+    - spec/money/formatting_spec.rb
 
 RSpec/IdenticalEqualityAssertion:
   # Allow identical expressions on both sides of the equality since we are
