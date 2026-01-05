@@ -60,10 +60,6 @@ Style/CaseEquality:
     - 'lib/money/money.rb'
     - 'lib/money/money/formatter.rb'
 
-Style/ClassVars:
-  Exclude:
-    - 'lib/money/currency.rb'
-
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowIfModifier.
 Style/IfInsideElse:

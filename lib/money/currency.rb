@@ -15,8 +15,8 @@ class Money
     extend Money::Currency::Heuristics
 
     # Keeping cached instances in sync between threads
-    @@mutex = Mutex.new
-    @@instances = {}
+    @mutex = Mutex.new
+    @instances = {}
 
     # Thrown when a Currency has been registered without all the attributes
     # which are required for the current action.
@@ -42,11 +42,11 @@ class Money
           raise UnknownCurrency, "Unknown currency '#{id}'"
         end
 
-        _instances[id] || @@mutex.synchronize { _instances[id] ||= super }
+        _instances[id] || @mutex.synchronize { _instances[id] ||= super }
       end
 
       def _instances
-        @@instances
+        @instances
       end
 
       # Lookup a currency with given +id+ an returns a +Currency+ instance on
@@ -173,7 +173,7 @@ class Money
       # @option delimiter [String] character between each thousands place
       def register(curr)
         key = curr.fetch(:iso_code).downcase.to_sym
-        @@mutex.synchronize { _instances.delete(key.to_s) }
+        @mutex.synchronize { _instances.delete(key.to_s) }
         table[key] = curr
         @stringified_keys = nil
         clear_iso_numeric_cache
@@ -215,7 +215,7 @@ class Money
       end
 
       def reset!
-        @@instances = {}
+        @instances = {}
         @table = Loader.load_currencies
         clear_iso_numeric_cache
       end
