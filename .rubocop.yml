@@ -39,6 +39,26 @@ Lint/EmptyClass:
   # Allow defining empty classes, since it can be used as a base class.
   Enabled: false
 
+# Metrics
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
 # Naming
 
 Naming/PredicateMethod:
@@ -54,6 +74,10 @@ RSpec/DescribedClass:
     # Prefer Money.new(…) to described_class.new(…)
     - 'spec/money_spec.rb'
     - 'spec/money/formatting_spec.rb'
+
+RSpec/ExampleLength:
+  # Allow long specs.
+  Enabled: false
 
 RSpec/IdenticalEqualityAssertion:
   # Allow identical expressions on both sides of the equality since we are
